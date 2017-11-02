@@ -13,14 +13,14 @@ end
 
 config = loadjson('config.json');
 
-if isempty(config.res)
+if isempty(config.resolution)
   % to find resolution
   disp('loading dwi resolution')
   dwi = niftiRead(config.dwi);
   outres = dwi.pixdim(1:3)
   clear dwi
 else
-  outres = config.res
+  outresolution = config.resolution
 end
 
 switch config.interpolation
@@ -47,7 +47,7 @@ outBvecs = fullfile('bvecs_rot');
 dtiRawAlignToT1(b0,t1,outAcpcTransform);
 
 % Run Alignment
-dtiRawResample(dwiRaw,[],outAcpcTransform,outDwi,interpolation,outres);
+dtiRawResample(dwiRaw,[],outAcpcTransform,outDwi,interpolation,outresolution);
 
 % Rotate bvecs
 bvecs = dtiRawReorientBvecs(bvecs_pre,[],outAcpcTransform,outBvecs);
