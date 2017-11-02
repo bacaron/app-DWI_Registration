@@ -17,7 +17,7 @@ if isempty(config.resolution)
   % to find resolution
   disp('loading dwi resolution')
   dwi = niftiRead(config.dwi);
-  outres = dwi.pixdim(1:3);
+  outresolution = dwi.pixdim(1:3);
   clear dwi
 else
   outresolution = str2num(config.resolution);
