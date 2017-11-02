@@ -15,7 +15,7 @@ bvecs=`./jq -r '.bvecs' config.json`;
 t1=`./jq -r '.t1' config.json`;
 echo "Files loaded"
 
-if [ -f "nodif_preNODDI_brain.nii.gz" ]; then
+if [ -f "nodif_brain.nii.gz" ]; then
 	echo "File exists. Skipping b0 brainmask creation."
 else	
 	echo "Creating b0 brainmask for alignment"
