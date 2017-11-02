@@ -17,10 +17,10 @@ if isempty(config.resolution)
   % to find resolution
   disp('loading dwi resolution')
   dwi = niftiRead(config.dwi);
-  outres = dwi.pixdim(1:3)
+  outres = dwi.pixdim(1:3);
   clear dwi
 else
-  outresolution = config.resolution
+  outresolution = str2num(config.resolution);
 end
 
 switch config.interpolation
@@ -31,7 +31,7 @@ switch config.interpolation
   case {'spline'}
     interpolation = [7 7 7 0 0 0];
   otherwise
-    error('Interpolation method not defined: %s.',config.interpolation)
+    error('Interpolation method not defined: %s.',config.interpolation);
 end 
 
 % Set directories
